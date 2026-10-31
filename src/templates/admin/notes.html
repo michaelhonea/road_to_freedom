@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Daily notes</h1>
+<p>One note per date; it is texted at the daily send time to everyone opted in. Keep it under 300 characters.</p>
+<form method="post" action="/admin/notes/add" class="form">
+  <label>Send date <input type="date" name="send_date" value="{{ today }}" required></label>
+  <label>Message <textarea name="body" rows="3" maxlength="300" required></textarea></label>
+  <button class="btn" type="submit">Save note</button>
+</form>
+<table>
+  <tr><th>Date</th><th>Note</th><th>Status</th><th></th></tr>
+  {% for n in notes %}
+  <tr><td>{{ n.send_date }}</td><td>{{ n.body }}</td><td>{{ "sent" if n.sent else "scheduled" }}</td>
+      <td><form method="post" action="/admin/notes/{{ n.id }}/delete"><button class="btn danger" type="submit">Delete</button></form></td></tr>
+  {% else %}<tr><td colspan="4">No upcoming notes.</td></tr>{% endfor %}
+</table>
+{% endblock %}

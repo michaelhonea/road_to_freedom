@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+{% block mainclass %}wide{% endblock %}
+{% block content %}
+
+<section class="hero-home">
+  <img class="hero-emblem" src="/static/img/emblem.svg" width="280" height="280"
+       alt="Road to Freedom and New Covenant Church of God emblem: a road leading to a church with a cross at sunrise">
+  <div class="hero-inner">
+    <p class="eyebrow">A Celebrate Recovery group &middot; {{ church_name }} &middot; Summerville, SC</p>
+    <h1>Road to Freedom</h1>
+    <p class="hero-sub">Healing from your hurts, hang-ups, and habits, one step at a time, and never alone.</p>
+    <blockquote class="hero-verse">
+      Search me, God, and know my heart; test me and know my anxious thoughts.
+      <cite>Psalm 139:23</cite>
+    </blockquote>
+    <p class="hero-cta">
+      <a class="btn gold" href="/lessons/1">Start with Lesson 1</a>
+      <a class="btn ghost" href="/meetings">Find a meeting</a>
+    </p>
+  </div>
+</section>
+
+<section class="meet-strip" aria-label="Meeting time and place">
+  <div class="meet-item"><span class="lbl">When</span><strong>{{ meeting.day }}, {{ meeting.time }}</strong></div>
+  <div class="meet-item"><span class="lbl">Where</span><strong>{{ meeting.street }}, {{ meeting.city }}</strong></div>
+  <div class="meet-item"><span class="lbl">What to expect</span><strong>{{ meeting.format|join(' · ') }}</strong></div>
+  <div class="meet-item meet-go"><a class="btn gold" href="{{ meeting.maps_url }}" target="_blank" rel="noopener">Get directions</a></div>
+</section>
+
+<div class="wrap">
+
+  <section class="band" id="welcome">
+    <div class="split">
+      <div>
+        <h2 class="sec">You are welcome here</h2>
+        <p class="lead">{{ meeting.welcome }}</p>
+        <p>Road to Freedom is a small group for anyone carrying a hurt, a hang-up, or a habit that feels too heavy to carry alone. We work through the Celebrate Recovery 8 Principles and 12 Steps together, with prayer, teaching, and open sharing, in a place that is {{ meeting.promise|join(', ')|lower }}.</p>
+        <p><a class="link-arrow" href="/meetings">What a Sunday night looks like &rarr;</a></p>
+      </div>
+      <ul class="check-list">
+        <li>Open to men and women</li>
+        <li>No sign-up, no cost, no pressure to speak</li>
+        <li>What is shared in the group stays in the group</li>
+        <li>Rooted in Scripture and the love of Christ</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="road">
+    <h2 class="sec center">The road: 8 principles, 25 lessons</h2>
+    <p class="center sub">Each principle is rooted in the Beatitudes and walks you through one or more of the 12 Steps.</p>
+    <div class="pgrid">
+      {% for p in principles %}
+      <a class="pcard" href="/principles#principle-{{ p.num }}">
+        <span class="pnum">{{ p.num }}</span>
+        <h3>{{ p.key }}</h3>
+        <p class="pmeta">Step{{ 's' if ' ' in p.steps }} {{ p.steps }}{% if p.lessons %} &middot; {{ p.lessons|length }} lesson{{ 's' if p.lessons|length != 1 }}{% endif %}</p>
+        <p class="ptext">{{ p.text }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="band" id="lessons">
+    <h2 class="sec center">All lessons</h2>
+    <p class="center sub">Read each lesson online or open the fill-in notes (PDF). Start at the beginning, or jump to where you are.</p>
+    <form method="get" action="/lessons/search" class="searchbar">
+      <input name="q" placeholder="Search all {{ lesson_count }} lessons (try &quot;forgiveness&quot;)" aria-label="Search lessons" required>
+      <button class="btn" type="submit">Search</button>
+    </form>
+    {% for p in principles %}{% if p.lessons %}
+    <div class="lgroup">
+      <h3><span class="pill">Principle {{ p.num }}</span> {{ p.key }}</h3>
+      <div class="ltiles">
+        {% for l in p.lessons %}
+        <a class="ltile" href="/lessons/{{ l.num }}"><span class="lnum">{{ l.num }}</span><span class="ltitle">{{ l.title }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}{% endfor %}
+    {% if extra_lessons %}
+    <div class="lgroup">
+      <h3><span class="pill">Extra</span> More to explore</h3>
+      <div class="ltiles">
+        {% for l in extra_lessons %}
+        <a class="ltile" href="/lessons/{{ l.num }}"><span class="lnum">{{ l.num }}</span><span class="ltitle">{{ l.title }}</span></a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    {% if full_pdf %}
+    <p class="center"><a class="btn alt" href="/static/resources/{{ full_pdf }}" target="_blank" rel="noopener">Download all lesson notes (one PDF)</a></p>
+    {% endif %}
+  </section>
+
+  <section class="band" id="steps">
+    <h2 class="sec center">The 12 Steps</h2>
+    <p class="center sub">Christ-centered steps, each paired with a Scripture.</p>
+    <div class="sgrid">
+      {% for s in steps %}
+      <a class="scard" href="/principles#step-{{ s.num }}">
+        <span class="snum">{{ s.num }}</span>
+        <span class="stext">{{ s.text }}</span>
+        <span class="sref">{{ s.ref }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="band" id="tools">
+    <h2 class="sec center">Walk it out through the week</h2>
+    <div class="tgrid">
+      <a class="tcard" href="/ask">
+        <h3>Ask a question</h3>
+        <p>Type what is on your heart and get an answer drawn from the lessons, with the sources shown.</p>
+        <span class="link-arrow">Ask now &rarr;</span>
+      </a>
+      <a class="tcard" href="/join">
+        <h3>Daily encouragement</h3>
+        <p>A short word by text each morning, plus reminders before group night. Opt in anytime, stop anytime.</p>
+        <span class="link-arrow">Get texts &rarr;</span>
+      </a>
+      <a class="tcard" href="/resources">
+        <h3>Free resources</h3>
+        <p>{{ resource_count }} free Celebrate Recovery downloads: inventory sheets, group guidelines, the Serenity Prayer, and topic pamphlets.</p>
+        <span class="link-arrow">Browse resources &rarr;</span>
+      </a>
+      <a class="tcard" href="/principles">
+        <h3>Principles &amp; Steps</h3>
+        <p>The full 8 Principles and 12 Steps with their Beatitudes and Scriptures, on one page you can print.</p>
+        <span class="link-arrow">Read them &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="band help" id="help">
+    <h2 class="sec">If you are in crisis</h2>
+    <p>You do not have to wait for Sunday. Call or text <strong>988</strong> (Suicide &amp; Crisis Lifeline, 24/7). In an emergency, call <strong>911</strong>. If you want to talk with someone from the church, call <a href="tel:+18435697691">{{ meeting.church_phone }}</a>.</p>
+  </section>
+
+</div>
+{% endblock %}

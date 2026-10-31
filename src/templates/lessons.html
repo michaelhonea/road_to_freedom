@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Lessons - {{ app_name }}{% endblock %}
+{% block content %}
+<h1>Lessons</h1>
+<form method="get" action="/lessons/search" class="form inline">
+  <input name="q" placeholder="Search all lessons..." required>
+  <button class="btn" type="submit">Search</button>
+  <a class="btn alt" href="/ask">Ask a question</a>
+</form>
+{% if full_pdf %}
+<p><a class="btn" href="/static/resources/{{ full_pdf }}" target="_blank" rel="noopener">Download all lesson notes (one PDF)</a></p>
+{% endif %}
+{% for group, items in groups %}
+<h2 id="{{ group|lower|replace(' ', '-') }}">{{ group }}</h2>
+<ul class="list lessonlist">
+  {% for l in items %}
+  <li><a href="/lessons/{{ l.num }}"><span class="num">{{ l.num }}</span> {{ l.title }}</a></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No lessons loaded yet. Run the import described in docs/SETUP.md.</p>
+{% endfor %}
+<p class="small">Lessons and notes are from the free Celebrate Recovery resources
+(<a href="https://celebraterecovery.com/free-resources/" target="_blank" rel="noopener">celebraterecovery.com</a>).</p>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Members</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<details open><summary>Add a member</summary>
+<form method="post" action="/admin/members/add" class="form inline">
+  <input name="first_name" placeholder="First name" required>
+  <input name="last_name" placeholder="Last name">
+  <input name="phone" placeholder="Phone" required>
+  <select name="group_id"><option value="">No group</option>{% for g in groups %}<option value="{{ g.id }}">{{ g.name }}</option>{% endfor %}</select>
+  <label class="check"><input type="checkbox" name="consented" value="yes"> They agreed to receive texts</label>
+  <button class="btn" type="submit">Add</button>
+</form></details>
+<details><summary>Add a group</summary>
+<form method="post" action="/admin/groups/add" class="form inline">
+  <input name="name" placeholder="Group name" required><input name="description" placeholder="Description">
+  <button class="btn" type="submit">Add group</button>
+</form></details>
+<table>
+  <tr><th>Name</th><th>Phone</th><th>Texts</th><th>Group / notes</th><th></th></tr>
+  {% for m in members %}
+  <tr>
+    <td>{{ m.full_name }}{% if not m.active %} <span class="small">(inactive)</span>{% endif %}</td>
+    <td>{{ m.phone }}</td>
+    <td>{{ "Yes" if m.sms_opt_in else "No" }}</td>
+    <td>
+      <form method="post" action="/admin/members/{{ m.id }}/update" class="form inline">
+        <select name="group_id"><option value="">No group</option>{% for g in groups %}<option value="{{ g.id }}" {{ "selected" if m.group_id == g.id }}>{{ g.name }}</option>{% endfor %}</select>
+        <input name="private_note" value="{{ m.private_note }}" placeholder="Leader-only note">
+        <label class="check"><input type="checkbox" name="active" value="yes" {{ "checked" if m.active }}> active</label>
+        <button class="btn alt" type="submit">Save</button>
+      </form>
+    </td>
+    <td><form method="post" action="/admin/members/{{ m.id }}/delete" onsubmit="return confirm('Delete this member?')"><button class="btn danger" type="submit">Delete</button></form></td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

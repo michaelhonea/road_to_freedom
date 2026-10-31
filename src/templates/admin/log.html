@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Message log</h1>
+<table>
+  <tr><th>Time (UTC)</th><th>To</th><th>Type</th><th>Status</th><th>Message</th></tr>
+  {% for log, m in rows %}
+  <tr><td>{{ log.created_at.strftime('%m/%d %H:%M') }}</td><td>{{ m.full_name if m else "-" }}</td>
+      <td>{{ log.kind }}</td><td>{{ log.status }}</td><td>{{ log.body[:90] }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

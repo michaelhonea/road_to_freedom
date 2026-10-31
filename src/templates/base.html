@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ app_name }} &middot; Celebrate Recovery in Summerville, SC{% endblock %}</title>
+  <meta name="description" content="{% block desc %}Road to Freedom is a Celebrate Recovery small group of {{ church_name }} in Summerville, SC. Meets Sundays at 6:00 PM. Lessons, resources, and encouragement for hurts, hang-ups, and habits.{% endblock %}">
+  <meta name="theme-color" content="#14284b">
+  <link rel="icon" type="image/svg+xml" href="/static/img/emblem.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <span>Sundays 6:00 PM &middot; {{ meeting.street }}, {{ meeting.city }}</span>
+  <a href="{{ meeting.maps_url }}" target="_blank" rel="noopener">Get directions &rarr;</a>
+</div>
+
+<header class="top">
+  <a class="brand" href="/">
+    <span class="brand-mark" aria-hidden="true">&#10013;</span>
+    <span class="brand-text">{{ app_name }}<small>A Celebrate Recovery group</small></span>
+  </a>
+  <button class="navtoggle" aria-expanded="false" aria-controls="mainnav" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <nav id="mainnav" aria-label="Main">
+    <a href="/" {% if current_path == '/' %}class="on"{% endif %}>Start Here</a>
+    <div class="dd">
+      <a href="/lessons" class="ddlabel {% if current_path.startswith('/lessons') %}on{% endif %}">Lessons <span aria-hidden="true">&#9662;</span></a>
+      <div class="ddmenu">
+        {% for group, items in nav_groups %}
+        <a href="/lessons#{{ group|lower|replace(' ', '-') }}">{{ group }} <small>({{ items|length }})</small></a>
+        {% endfor %}
+        <a class="ddall" href="/lessons">All {{ nav_groups|map('last')|map('length')|sum }} lessons</a>
+      </div>
+    </div>
+    <a href="/principles" {% if current_path == '/principles' %}class="on"{% endif %}>Principles &amp; Steps</a>
+    <a href="/resources" {% if current_path == '/resources' %}class="on"{% endif %}>Free Resources</a>
+    <a href="/ask" {% if current_path == '/ask' %}class="on"{% endif %}>Ask a Question</a>
+    <a href="/meetings" {% if current_path == '/meetings' %}class="on"{% endif %}>Find a Meeting</a>
+    <a class="navcta" href="/join">Get Texts</a>
+    {% if is_admin %}<a href="/admin">Leader Admin</a>{% endif %}
+  </nav>
+</header>
+
+<main id="main" class="{% block mainclass %}narrow{% endblock %}">{% block content %}{% endblock %}</main>
+
+<footer class="site-footer">
+  <div class="foot-grid">
+    <div>
+      <h4>{{ app_name }}</h4>
+      <p>A Celebrate Recovery small group of <a href="{{ meeting.church_url }}" target="_blank" rel="noopener">{{ church_name }}</a>. A safe, confidential, Christ-centered place to work through hurts, hang-ups, and habits.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/principles">8 Principles &amp; 12 Steps</a></li>
+        <li><a href="/resources">Free resources</a></li>
+        <li><a href="/ask">Ask a question</a></li>
+        <li><a href="/join">Get daily encouragement</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Join us</h4>
+      <p><strong>{{ meeting.day }}, {{ meeting.time }}</strong><br>
+      {{ meeting.place }}<br>{{ meeting.street }}<br>{{ meeting.city }}</p>
+      <p><a href="{{ meeting.maps_url }}" target="_blank" rel="noopener">Open in Google Maps</a><br>
+      <a href="tel:+18435697691">{{ meeting.church_phone }}</a><br>
+      <a href="mailto:{{ meeting.church_email }}">{{ meeting.church_email }}</a></p>
+    </div>
+  </div>
+  <div class="foot-help">
+    Need help right now? Call or text <strong>988</strong> (24/7). In an emergency call <strong>911</strong>.
+  </div>
+  <p class="foot-small">Celebrate Recovery&reg; materials are used from the free resources at
+    <a href="https://celebraterecovery.com/free-resources/" target="_blank" rel="noopener">celebraterecovery.com</a>.
+    {{ app_name }} is a ministry group of {{ church_name }}.</p>
+</footer>
+<script src="/static/js/site.js"></script>
+</body>
+</html>

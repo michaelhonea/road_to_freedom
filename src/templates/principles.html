@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}8 Principles &amp; 12 Steps &middot; {{ app_name }}{% endblock %}
+{% block mainclass %}wide{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <p class="eyebrow">Celebrate Recovery&reg;</p>
+  <h1>The 8 Principles &amp; 12 Steps</h1>
+  <p class="hero-sub">Eight principles rooted in the Beatitudes, and twelve Christ-centered steps with the Scripture behind each one.</p>
+</section>
+<div class="wrap">
+  <nav class="jump" aria-label="On this page">
+    <a href="#principles">8 Principles</a>
+    <a href="#steps">12 Steps</a>
+    <a href="javascript:window.print()">Print this page</a>
+  </nav>
+
+  <h2 class="sec" id="principles">The 8 Principles</h2>
+  <div class="plist">
+    {% for p in principles %}
+    <article class="pitem" id="principle-{{ p.num }}">
+      <div class="pitem-num">{{ p.num }}</div>
+      <div class="pitem-body">
+        <h3>{{ p.key }}</h3>
+        <p>{{ p.text }}</p>
+        <p class="pmeta">Step{{ 's' if ' ' in p.steps }} {{ p.steps }}</p>
+        {% if p.verse %}<blockquote><em>&ldquo;{{ p.verse }}&rdquo;</em> <cite>{{ p.ref }}</cite></blockquote>{% endif %}
+        {% if p.verse2 %}<blockquote><em>&ldquo;{{ p.verse2 }}&rdquo;</em> <cite>{{ p.ref2 }}</cite></blockquote>{% endif %}
+        {% if p.lessons %}
+        <p class="plessons"><strong>Lessons:</strong>
+          {% for l in p.lessons %}<a href="/lessons/{{ l.num }}">{{ l.num }}. {{ l.title }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}
+        </p>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+
+  <h2 class="sec" id="steps">The 12 Steps</h2>
+  <div class="slist">
+    {% for s in steps %}
+    <article class="sitem" id="step-{{ s.num }}">
+      <div class="pitem-num">{{ s.num }}</div>
+      <div class="pitem-body">
+        <p class="stext-lg">{{ s.text }}</p>
+        <p class="sref">{{ s.ref }} (NIV)</p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="small">Celebrate Recovery&reg; is a registered trademark. The Christ-centered 12 Steps draw on material from the 12 Suggested Steps of Alcoholics Anonymous. Source: <a href="https://celebraterecovery.com/free-resources/" target="_blank" rel="noopener">celebraterecovery.com</a>.</p>
+</div>
+{% endblock %}

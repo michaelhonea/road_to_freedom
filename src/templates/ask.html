@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Ask a Question - {{ app_name }}{% endblock %}
+{% block content %}
+<h1>Ask a question</h1>
+<p>Answers come from the {{ app_name }} lessons. This is not counseling or medical advice. Please talk with a leader about anything serious.</p>
+<form id="askForm" class="form">
+  <textarea id="q" name="question" rows="3" maxlength="500" required placeholder="Example: What does the lesson say about forgiveness?"></textarea>
+  <button class="btn" type="submit">Ask</button>
+</form>
+<div id="out" class="answer" hidden></div>
+<script src="/static/js/ask.js"></script>
+{% endblock %}

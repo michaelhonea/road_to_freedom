@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Meetings &amp; reminders</h1>
+<form method="post" action="/admin/meetings/add" class="form inline">
+  <input name="title" placeholder="Title (e.g. Thursday Night Group)" required>
+  <input name="starts_at" type="datetime-local" required>
+  <input name="location" placeholder="Location">
+  <select name="group_id"><option value="">Everyone</option>{% for g in groups %}<option value="{{ g.id }}">{{ g.name }}</option>{% endfor %}</select>
+  <label>Remind <input name="reminder_hours_before" type="number" value="24" min="1" max="168" style="width:5em"> hrs before</label>
+  <input name="custom_message" placeholder="Extra line (optional)" maxlength="300">
+  <button class="btn" type="submit">Add</button>
+</form>
+<table>
+  <tr><th>When</th><th>Title</th><th>Reminder</th><th></th></tr>
+  {% for m in meetings %}
+  <tr><td>{{ m.starts_at.strftime('%a %b %d, %I:%M %p') }}</td><td>{{ m.title }}</td>
+      <td>{{ "sent" if m.reminder_sent else "pending (" ~ m.reminder_hours_before ~ "h before)" }}</td>
+      <td><form method="post" action="/admin/meetings/{{ m.id }}/delete"><button class="btn danger" type="submit">Delete</button></form></td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

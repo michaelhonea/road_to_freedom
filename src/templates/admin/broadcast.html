@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Send a text now</h1>
+{% if sent %}<p class="ok">Sent to {{ sent }} people.</p>{% endif %}
+<form method="post" action="/admin/broadcast" class="form" onsubmit="return confirm('Send this text now?')">
+  <label>To <select name="group_id"><option value="">Everyone opted in</option>{% for g in groups %}<option value="{{ g.id }}">{{ g.name }}</option>{% endfor %}</select></label>
+  <label>Message <textarea name="body" rows="3" maxlength="300" required></textarea></label>
+  <button class="btn" type="submit">Send</button>
+</form>
+{% endblock %}

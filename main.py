@@ -1,10 +1,6 @@
-"""Entry point for Road to Freedom.
-
-Render start command:  uvicorn main:app --host 0.0.0.0 --port $PORT
-Local run:             python main.py
+"""Entry point. Run locally with:  python main.py
+In production the host runs:     uvicorn main:app --host 0.0.0.0 --port $PORT
 """
-import os
-
 import uvicorn
 
 from src.app import create_app
@@ -12,4 +8,4 @@ from src.app import create_app
 app = create_app()
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=int(os.environ.get("PORT", "8000")))
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

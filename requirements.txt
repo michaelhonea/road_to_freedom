@@ -1,4 +1,12 @@
-fastapi>=0.110
-uvicorn>=0.29
-itsdangerous>=2.1
+fastapi>=0.115
+uvicorn[standard]>=0.30
+jinja2>=3.1
 python-multipart>=0.0.9
+sqlalchemy>=2.0
+psycopg2-binary>=2.9
+python-dotenv>=1.0
+itsdangerous>=2.2
+apscheduler>=3.10
+twilio>=9.0
+anthropic>=0.40
+markdown>=3.6

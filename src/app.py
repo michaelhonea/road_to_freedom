@@ -1,21 +1,32 @@
 """FastAPI application factory."""
-from fastapi import FastAPI
-from starlette.middleware.sessions import SessionMiddleware
+import logging
+from contextlib import asynccontextmanager
 
-from . import config
-from .routes import router
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+from .config import settings
+from .database import init_db
+from .routers import admin, public, tasks, webhook
+from .services import lessons, scheduler
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    init_db()
+    lessons.reload()
+    scheduler.start()
+    yield
+    scheduler.stop()
 
 
 def create_app() -> FastAPI:
-    # No public API docs: this is a private group site.
-    app = FastAPI(title="Road to Freedom", docs_url=None, redoc_url=None, openapi_url=None)
-    app.add_middleware(
-        SessionMiddleware,
-        secret_key=config.SECRET_KEY,
-        session_cookie="rtf_session",
-        max_age=config.SESSION_MAX_AGE,
-        same_site="lax",
-        https_only=config.HTTPS_ONLY,
-    )
-    app.include_router(router)
+    app = FastAPI(title=settings.app_name, lifespan=lifespan, docs_url=None, redoc_url=None)
+    app.mount("/static", StaticFiles(directory=str(settings.static_dir)), name="static")
+    app.include_router(public.router)
+    app.include_router(webhook.router)
+    app.include_router(tasks.router)
+    app.include_router(admin.router)
     return app

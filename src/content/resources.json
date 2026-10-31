@@ -1,0 +1,351 @@
+{
+  "lessons": [
+    {
+      "num": 1,
+      "title": "Denial",
+      "slug": "01-denial",
+      "principle": 1,
+      "pdf": "lessons/lesson-01-denial.pdf",
+      "has_text": true
+    },
+    {
+      "num": 2,
+      "title": "Powerless",
+      "slug": "02-powerless",
+      "principle": 1,
+      "pdf": "lessons/lesson-02-powerless.pdf",
+      "has_text": true
+    },
+    {
+      "num": 3,
+      "title": "Hope",
+      "slug": "03-hope",
+      "principle": 2,
+      "pdf": "lessons/lesson-03-hope.pdf",
+      "has_text": true
+    },
+    {
+      "num": 4,
+      "title": "Sanity",
+      "slug": "04-sanity",
+      "principle": 2,
+      "pdf": "lessons/lesson-04-sanity.pdf",
+      "has_text": true
+    },
+    {
+      "num": 5,
+      "title": "Turn",
+      "slug": "05-turn",
+      "principle": 3,
+      "pdf": "lessons/lesson-05-turn.pdf",
+      "has_text": true
+    },
+    {
+      "num": 6,
+      "title": "Action",
+      "slug": "06-action",
+      "principle": 3,
+      "pdf": "lessons/lesson-06-action.pdf",
+      "has_text": true
+    },
+    {
+      "num": 7,
+      "title": "Sponsor",
+      "slug": "07-sponsor",
+      "principle": 4,
+      "pdf": "lessons/lesson-07-sponsor.pdf",
+      "has_text": true
+    },
+    {
+      "num": 8,
+      "title": "Moral",
+      "slug": "08-moral",
+      "principle": 4,
+      "pdf": "lessons/lesson-08-moral.pdf",
+      "has_text": true
+    },
+    {
+      "num": 9,
+      "title": "Inventory",
+      "slug": "09-inventory",
+      "principle": 4,
+      "pdf": "lessons/lesson-09-inventory.pdf",
+      "has_text": true
+    },
+    {
+      "num": 10,
+      "title": "Spiritual Inventory (Part 1)",
+      "slug": "10-spiritual-inventory-part-1",
+      "principle": 4,
+      "pdf": "lessons/lesson-10-spiritual-inventory-part-1.pdf",
+      "has_text": true
+    },
+    {
+      "num": 11,
+      "title": "Spiritual Inventory (Part 2)",
+      "slug": "11-spiritual-inventory-part-2",
+      "principle": 4,
+      "pdf": "lessons/lesson-11-spiritual-inventory-part-2.pdf",
+      "has_text": true
+    },
+    {
+      "num": 12,
+      "title": "Confess",
+      "slug": "12-confess",
+      "principle": 4,
+      "pdf": "lessons/lesson-12-confess.pdf",
+      "has_text": true
+    },
+    {
+      "num": 13,
+      "title": "Admit",
+      "slug": "13-admit",
+      "principle": 4,
+      "pdf": "lessons/lesson-13-admit.pdf",
+      "has_text": true
+    },
+    {
+      "num": 14,
+      "title": "Ready",
+      "slug": "14-ready",
+      "principle": 5,
+      "pdf": "lessons/lesson-14-ready.pdf",
+      "has_text": true
+    },
+    {
+      "num": 15,
+      "title": "Victory",
+      "slug": "15-victory",
+      "principle": 5,
+      "pdf": "lessons/lesson-15-victory.pdf",
+      "has_text": true
+    },
+    {
+      "num": 16,
+      "title": "Amends",
+      "slug": "16-amends",
+      "principle": 6,
+      "pdf": "lessons/lesson-16-amends.pdf",
+      "has_text": true
+    },
+    {
+      "num": 17,
+      "title": "Forgiveness",
+      "slug": "17-forgiveness",
+      "principle": 6,
+      "pdf": "lessons/lesson-17-forgiveness.pdf",
+      "has_text": true
+    },
+    {
+      "num": 18,
+      "title": "Grace",
+      "slug": "18-grace",
+      "principle": 6,
+      "pdf": "lessons/lesson-18-grace.pdf",
+      "has_text": true
+    },
+    {
+      "num": 19,
+      "title": "Crossroads",
+      "slug": "19-crossroads",
+      "principle": 7,
+      "pdf": "lessons/lesson-19-crossroads.pdf",
+      "has_text": true
+    },
+    {
+      "num": 20,
+      "title": "Daily Inventory",
+      "slug": "20-daily-inventory",
+      "principle": 7,
+      "pdf": "lessons/lesson-20-daily-inventory.pdf",
+      "has_text": true
+    },
+    {
+      "num": 21,
+      "title": "Relapse",
+      "slug": "21-relapse",
+      "principle": 7,
+      "pdf": "lessons/lesson-21-relapse.pdf",
+      "has_text": true
+    },
+    {
+      "num": 22,
+      "title": "Gratitude",
+      "slug": "22-gratitude",
+      "principle": 7,
+      "pdf": "lessons/lesson-22-gratitude.pdf",
+      "has_text": true
+    },
+    {
+      "num": 23,
+      "title": "Give",
+      "slug": "23-give",
+      "principle": 8,
+      "pdf": "lessons/lesson-23-give.pdf",
+      "has_text": true
+    },
+    {
+      "num": 24,
+      "title": "Yes",
+      "slug": "24-yes",
+      "principle": 8,
+      "pdf": "lessons/lesson-24-yes.pdf",
+      "has_text": true
+    },
+    {
+      "num": 25,
+      "title": "Seven Reasons We Get Stuck",
+      "slug": "25-seven-reasons-we-get-stuck",
+      "principle": null,
+      "pdf": "lessons/lesson-25-seven-reasons-we-get-stuck.pdf",
+      "has_text": true
+    }
+  ],
+  "ministry": [
+    {
+      "title": "The 8 Principles",
+      "slug": "8-principles",
+      "file": "ministry/8-principles.pdf"
+    },
+    {
+      "title": "The 12 Steps",
+      "slug": "12-steps",
+      "file": "ministry/12-steps.pdf"
+    },
+    {
+      "title": "The Serenity Prayer",
+      "slug": "serenity-prayer",
+      "file": "ministry/serenity-prayer.pdf"
+    },
+    {
+      "title": "DNA Group Formats",
+      "slug": "dna-group-formats",
+      "file": "ministry/dna-group-formats.pdf"
+    },
+    {
+      "title": "Celebrate Recovery DNA Statement",
+      "slug": "dna-statement",
+      "file": "ministry/dna-statement.pdf"
+    },
+    {
+      "title": "Basic and Extended Group Guidelines",
+      "slug": "group-guidelines",
+      "file": "ministry/group-guidelines.pdf"
+    },
+    {
+      "title": "Step Study Assignments",
+      "slug": "step-study-assignments",
+      "file": "ministry/step-study-assignments.pdf"
+    },
+    {
+      "title": "Inventory Sheets (Step 4)",
+      "slug": "inventory-sheets",
+      "file": "ministry/inventory-sheets.pdf"
+    }
+  ],
+  "pamphlets": [
+    {
+      "topic": "Adult Children of Family Dysfunction",
+      "slug": "adult-children-of-family-dysfunction",
+      "bifold": "pamphlets/adult-children-of-family-dysfunction-bifold.pdf",
+      "trifold": "pamphlets/adult-children-of-family-dysfunction-trifold.pdf"
+    },
+    {
+      "topic": "Anger",
+      "slug": "anger",
+      "bifold": "pamphlets/anger-bifold.pdf",
+      "trifold": "pamphlets/anger-trifold.pdf"
+    },
+    {
+      "topic": "Celebration Place",
+      "slug": "celebration-place",
+      "bifold": "pamphlets/celebration-place-bifold.pdf",
+      "trifold": "pamphlets/celebration-place-trifold.pdf"
+    },
+    {
+      "topic": "Chemical Dependency",
+      "slug": "chemical-dependency",
+      "bifold": "pamphlets/chemical-dependency-bifold.pdf",
+      "trifold": "pamphlets/chemical-dependency-trifold.pdf"
+    },
+    {
+      "topic": "Codependency",
+      "slug": "codependency",
+      "bifold": "pamphlets/codependency-bifold.pdf",
+      "trifold": "pamphlets/codependency-trifold.pdf"
+    },
+    {
+      "topic": "Food and Body Image",
+      "slug": "food-and-body-image",
+      "bifold": "pamphlets/food-and-body-image-bifold.pdf",
+      "trifold": "pamphlets/food-and-body-image-trifold.pdf"
+    },
+    {
+      "topic": "Gambling Addiction",
+      "slug": "gambling-addiction",
+      "bifold": "pamphlets/gambling-addiction-bifold.pdf",
+      "trifold": "pamphlets/gambling-addiction-trifold.pdf"
+    },
+    {
+      "topic": "Love and Relationship Addiction",
+      "slug": "love-and-relationship-addiction",
+      "bifold": "pamphlets/love-and-relationship-addiction-bifold.pdf",
+      "trifold": "pamphlets/love-and-relationship-addiction-trifold.pdf"
+    },
+    {
+      "topic": "Mental Health",
+      "slug": "mental-health",
+      "bifold": "pamphlets/mental-health-bifold.pdf",
+      "trifold": "pamphlets/mental-health-trifold.pdf"
+    },
+    {
+      "topic": "Mixed Issues",
+      "slug": "mixed-issues",
+      "bifold": "pamphlets/mixed-issues-bifold.pdf",
+      "trifold": "pamphlets/mixed-issues-trifold.pdf"
+    },
+    {
+      "topic": "Physical, Emotional, and/or Sexual Abuse - For Men",
+      "slug": "physical-emotional-and-or-sexual-abuse-for-men",
+      "bifold": "pamphlets/physical-emotional-and-or-sexual-abuse-for-men-bifold.pdf",
+      "trifold": "pamphlets/physical-emotional-and-or-sexual-abuse-for-men-trifold.pdf"
+    },
+    {
+      "topic": "Physical, Emotional, and/or Sexual Abuse - For Women",
+      "slug": "physical-emotional-and-or-sexual-abuse-for-women",
+      "bifold": "pamphlets/physical-emotional-and-or-sexual-abuse-for-women-bifold.pdf",
+      "trifold": "pamphlets/physical-emotional-and-or-sexual-abuse-for-women-trifold.pdf"
+    },
+    {
+      "topic": "Physical, Emotional, and/or Sexual Abuse - The 12 Steps",
+      "slug": "physical-emotional-and-or-sexual-abuse-the-12-steps",
+      "bifold": "pamphlets/physical-emotional-and-or-sexual-abuse-the-12-steps-bifold.pdf",
+      "trifold": "pamphlets/physical-emotional-and-or-sexual-abuse-the-12-steps-trifold.pdf"
+    },
+    {
+      "topic": "Sexual Addiction - For Men",
+      "slug": "sexual-addiction-for-men",
+      "bifold": "pamphlets/sexual-addiction-for-men-bifold.pdf",
+      "trifold": "pamphlets/sexual-addiction-for-men-trifold.pdf"
+    },
+    {
+      "topic": "Sexual Addiction - For Women",
+      "slug": "sexual-addiction-for-women",
+      "bifold": "pamphlets/sexual-addiction-for-women-bifold.pdf",
+      "trifold": "pamphlets/sexual-addiction-for-women-trifold.pdf"
+    },
+    {
+      "topic": "The Landing",
+      "slug": "the-landing",
+      "bifold": "pamphlets/the-landing-bifold.pdf",
+      "trifold": "pamphlets/the-landing-trifold.pdf"
+    },
+    {
+      "topic": "Welcome Newcomer",
+      "slug": "welcome-newcomer",
+      "bifold": "pamphlets/welcome-newcomer-bifold.pdf",
+      "trifold": "pamphlets/welcome-newcomer-trifold.pdf"
+    }
+  ],
+  "full_pdf": "Complete-Lesson-Notes-1-25.pdf"
+}

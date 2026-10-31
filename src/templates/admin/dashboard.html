@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "admin/_nav.html" %}
+<h1>Dashboard</h1>
+<div class="cards">
+  <div class="card"><h3>{{ stats.members }}</h3><p>Active members</p></div>
+  <div class="card"><h3>{{ stats.opted_in }}</h3><p>Opted in to texts</p></div>
+  <div class="card"><h3>{{ stats.upcoming }}</h3><p>Upcoming meetings</p></div>
+  <div class="card"><h3>{{ stats.questions }}</h3><p>Questions asked</p></div>
+</div>
+<h2>Recent questions</h2>
+<ul class="list">
+  {% for q in recent_q %}<li>{{ q.question }} <span class="small">{{ q.created_at.strftime('%b %d %H:%M') }}{% if q.flagged_sensitive %} &middot; <strong>crisis flag</strong>{% endif %}</span></li>
+  {% else %}<li>None yet.</li>{% endfor %}
+</ul>
+<form method="post" action="/admin/lessons/reload"><button class="btn alt" type="submit">Reload lesson files</button></form>
+<p><a href="/admin/logout">Sign out</a></p>
+{% endblock %}

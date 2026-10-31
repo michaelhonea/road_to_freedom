@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Find a Meeting &middot; {{ app_name }}{% endblock %}
+{% block mainclass %}wide{% endblock %}
+{% block content %}
+<section class="page-hero">
+  <p class="eyebrow">Summerville, SC</p>
+  <h1>Find a Meeting</h1>
+  <p class="hero-sub">{{ meeting.day }} at {{ meeting.time }}. {{ meeting.welcome }}</p>
+</section>
+<div class="wrap">
+  <div class="split">
+    <div>
+      <h2 class="sec">Join us Sunday night</h2>
+      <p class="meetbig"><strong>{{ meeting.day }}, {{ meeting.time }}</strong><br>
+        {{ meeting.place }}<br>{{ meeting.street }}<br>{{ meeting.city }}</p>
+      <p>
+        <a class="btn gold" href="{{ meeting.maps_url }}" target="_blank" rel="noopener">Open in Google Maps</a>
+        <a class="btn" href="/join">Get a reminder by text</a>
+      </p>
+      <h3>What to expect</h3>
+      <ul class="check-list">
+        <li><strong>Prayer.</strong> We open and close in prayer.</li>
+        <li><strong>Teaching.</strong> One lesson from the Road to Freedom curriculum, tied to a principle and a step.</li>
+        <li><strong>Open share.</strong> A chance to share if you want to, never required.</li>
+        <li><strong>Safe and confidential.</strong> What is shared in the group stays in the group.</li>
+      </ul>
+      <p>Come as you are. You do not have to sign up, and you do not have to say a word your first night.</p>
+    </div>
+    <div class="mapbox">
+      <iframe src="{{ meeting.embed_url }}" width="100%" height="360" style="border:0" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade" title="Map to {{ meeting.street }}, {{ meeting.city }}"></iframe>
+    </div>
+  </div>
+
+  <section class="band">
+    <h2 class="sec">About our church home</h2>
+    <p>Road to Freedom is a Celebrate Recovery small group of <a href="{{ meeting.church_url }}" target="_blank" rel="noopener">{{ church_name }}</a>, in historic downtown Summerville.</p>
+    <p>Phone <a href="tel:+18435697691">{{ meeting.church_phone }}</a> &middot; Email <a href="mailto:{{ meeting.church_email }}">{{ meeting.church_email }}</a></p>
+    <p><a class="btn alt" href="{{ meeting.church_url }}" target="_blank" rel="noopener">Visit the church website</a></p>
+  </section>
+</div>
+{% endblock %}

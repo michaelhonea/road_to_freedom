@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Road to Freedom, New Covenant Church of God emblem: a road leading to a church with a cross at sunrise">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1a33"/>
+      <stop offset="0.55" stop-color="#24467a"/>
+      <stop offset="1" stop-color="#e9c46a"/>
+    </linearGradient>
+    <clipPath id="disc"><circle cx="200" cy="200" r="132"/></clipPath>
+    <path id="arcTop" d="M 50,200 A 150,150 0 0 1 350,200"/>
+    <path id="arcBottom" d="M 28,200 A 172,172 0 0 0 372,200"/>
+  </defs>
+
+  <!-- badge -->
+  <circle cx="200" cy="200" r="194" fill="#14284b" stroke="#c9a84c" stroke-width="6"/>
+  <circle cx="200" cy="200" r="140" fill="none" stroke="#c9a84c" stroke-width="2"/>
+
+  <!-- lettering -->
+  <g font-family="Cinzel, Georgia, 'Times New Roman', serif" font-weight="700" fill="#f1e6c4" text-anchor="middle">
+    <text font-size="21" letter-spacing="2.2"><textPath href="#arcTop" startOffset="50%">NEW COVENANT CHURCH OF GOD</textPath></text>
+    <text font-size="24" letter-spacing="3.5" fill="#c9a84c"><textPath href="#arcBottom" startOffset="50%">ROAD TO FREEDOM</textPath></text>
+  </g>
+  <g fill="#c9a84c"><circle cx="34" cy="200" r="4"/><circle cx="366" cy="200" r="4"/></g>
+
+  <!-- scene -->
+  <g clip-path="url(#disc)">
+    <rect x="60" y="60" width="280" height="280" fill="url(#sky)"/>
+    <!-- sun rays -->
+    <g stroke="#f1e6c4" stroke-width="2.5" stroke-linecap="round" opacity=".75">
+      <line x1="200" y1="168" x2="200" y2="108"/>
+      <line x1="200" y1="168" x2="158" y2="125"/><line x1="200" y1="168" x2="242" y2="125"/>
+      <line x1="200" y1="168" x2="132" y2="150"/><line x1="200" y1="168" x2="268" y2="150"/>
+    </g>
+    <circle cx="200" cy="190" r="34" fill="#f4d58d"/>
+    <!-- hills -->
+    <path d="M60 218 Q120 190 200 206 Q280 190 340 218 L340 340 L60 340 Z" fill="#17314f"/>
+    <path d="M60 232 Q130 210 200 222 Q270 210 340 232 L340 340 L60 340 Z" fill="#102440"/>
+    <!-- church -->
+    <g>
+      <rect x="181" y="190" width="38" height="32" fill="#f1e6c4"/>
+      <path d="M176 192 L200 170 L224 192 Z" fill="#e3d4a6"/>
+      <rect x="195" y="158" width="10" height="16" fill="#f1e6c4"/>
+      <path d="M192 160 L200 146 L208 160 Z" fill="#c9a84c"/>
+      <rect x="198.5" y="124" width="3" height="24" fill="#c9a84c"/>
+      <rect x="192" y="131" width="16" height="3" fill="#c9a84c"/>
+      <path d="M195 222 L195 208 Q200 201 205 208 L205 222 Z" fill="#14284b"/>
+    </g>
+    <!-- road -->
+    <path d="M196 222 C 190 250, 120 270, 96 340 L 304 340 C 280 270, 210 250, 204 222 Z" fill="#2b2f3a"/>
+    <path d="M196 222 C 190 250, 120 270, 96 340" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+    <path d="M204 222 C 210 250, 280 270, 304 340" fill="none" stroke="#c9a84c" stroke-width="2.5"/>
+    <path d="M200 226 C 199 262, 190 290, 196 340" fill="none" stroke="#f1e6c4" stroke-width="3" stroke-dasharray="9 9" stroke-linecap="round"/>
+  </g>
+</svg>

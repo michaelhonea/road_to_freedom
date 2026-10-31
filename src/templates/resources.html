@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Free Resources - {{ app_name }}{% endblock %}
+{% block content %}
+<h1>Resource Library</h1>
+<p>Everything below is hosted right here on this site. These are the free materials provided by
+<a href="https://celebraterecovery.com/free-resources/" target="_blank" rel="noopener">Celebrate Recovery</a>,
+shown unchanged.</p>
+
+{% if full_pdf %}
+<div class="card">
+  <h3>Complete lesson notes, Lessons 1-{{ lesson_count }}</h3>
+  <p>All lesson notes in a single PDF with bookmarks.</p>
+  <a class="btn" href="/static/resources/{{ full_pdf }}" target="_blank" rel="noopener">Open PDF</a>
+  <a class="btn alt" href="/static/resources/{{ full_pdf }}" download>Download</a>
+</div>
+{% endif %}
+
+<h2>Lessons</h2>
+<p><a class="btn" href="/lessons">Browse all {{ lesson_count }} lessons</a></p>
+
+<h2>Ministry documents</h2>
+<ul class="list">
+  {% for d in ministry %}
+  <li><a href="/static/resources/{{ d.file }}" target="_blank" rel="noopener">{{ d.title }}</a> (PDF)</li>
+  {% endfor %}
+</ul>
+
+<h2>Issue pamphlets</h2>
+<p class="small">Bi-fold and tri-fold versions for printing.</p>
+<table>
+  <tr><th>Topic</th><th>Bi-fold</th><th>Tri-fold</th></tr>
+  {% for p in pamphlets %}
+  <tr>
+    <td>{{ p.topic }}</td>
+    <td>{% if p.bifold %}<a href="/static/resources/{{ p.bifold }}" target="_blank" rel="noopener">PDF</a>{% endif %}</td>
+    <td>{% if p.trifold %}<a href="/static/resources/{{ p.trifold }}" target="_blank" rel="noopener">PDF</a>{% endif %}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

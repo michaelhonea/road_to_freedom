@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Lesson {{ lsn.num }}: {{ lsn.title }} - {{ app_name }}{% endblock %}
+{% block content %}
+<p class="small"><a href="/lessons">&larr; All lessons</a>{% if lsn.principle %} &middot; Principle {{ lsn.principle }}{% endif %}</p>
+<h1>Lesson {{ lsn.num }}: {{ lsn.title }}</h1>
+
+{% if lsn.pdf %}
+<p>
+  <a class="btn" href="/static/resources/{{ lsn.pdf }}" target="_blank" rel="noopener">Open lesson notes (PDF)</a>
+  <a class="btn alt" href="/static/resources/{{ lsn.pdf }}" download>Download</a>
+</p>
+{% endif %}
+
+{% if html %}
+<article class="lesson">{{ html|safe }}</article>
+{% endif %}
+
+{% if lsn.pdf %}
+<h2>Lesson notes (fill-in sheet)</h2>
+<iframe class="pdfview" src="/static/resources/{{ lsn.pdf }}#view=FitH" title="Lesson {{ lsn.num }} notes"></iframe>
+<p class="small">If the PDF doesn't show on your phone, use the Open or Download button above.</p>
+{% endif %}
+
+<nav class="pager">
+  {% if prev_l %}<a class="btn alt" href="/lessons/{{ prev_l.num }}">&larr; {{ prev_l.num }}. {{ prev_l.title }}</a>{% endif %}
+  {% if next_l %}<a class="btn alt" href="/lessons/{{ next_l.num }}">{{ next_l.num }}. {{ next_l.title }} &rarr;</a>{% endif %}
+</nav>
+<p class="small">Source: Celebrate Recovery free resources.</p>
+{% endblock %}

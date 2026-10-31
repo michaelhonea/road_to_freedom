@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Search: {{ q }}</h1>
+{% for h in hits %}
+<article class="card"><h3>{{ h.lesson }} &mdash; {{ h.heading }}</h3><p>{{ h.text[:600] }}{% if h.text|length > 600 %}...{% endif %}</p></article>
+{% else %}
+<p>No matches. Try different words, or <a href="/ask">ask a question</a>.</p>
+{% endfor %}
+{% endblock %}
