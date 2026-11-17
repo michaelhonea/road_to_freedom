@@ -23,6 +23,14 @@ services:
         sync: false
       - key: TWILIO_MESSAGING_SERVICE_SID
         sync: false
+      - key: EMAIL_DRY_RUN
+        value: "true"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: DATABASE_URL

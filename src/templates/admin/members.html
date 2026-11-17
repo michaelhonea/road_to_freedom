@@ -8,8 +8,10 @@
   <input name="first_name" placeholder="First name" required>
   <input name="last_name" placeholder="Last name">
   <input name="phone" placeholder="Phone" required>
+  <input name="email" type="email" placeholder="Email (optional)">
   <select name="group_id"><option value="">No group</option>{% for g in groups %}<option value="{{ g.id }}">{{ g.name }}</option>{% endfor %}</select>
   <label class="check"><input type="checkbox" name="consented" value="yes"> They agreed to receive texts</label>
+  <label class="check"><input type="checkbox" name="email_consented" value="yes"> They agreed to receive email</label>
   <button class="btn" type="submit">Add</button>
 </form></details>
 <details><summary>Add a group</summary>
@@ -18,12 +20,13 @@
   <button class="btn" type="submit">Add group</button>
 </form></details>
 <table>
-  <tr><th>Name</th><th>Phone</th><th>Texts</th><th>Group / notes</th><th></th></tr>
+  <tr><th>Name</th><th>Phone</th><th>Texts</th><th>Email</th><th>Group / notes</th><th></th></tr>
   {% for m in members %}
   <tr>
     <td>{{ m.full_name }}{% if not m.active %} <span class="small">(inactive)</span>{% endif %}</td>
     <td>{{ m.phone }}</td>
     <td>{{ "Yes" if m.sms_opt_in else "No" }}</td>
+    <td>{{ m.email or "-" }}{% if m.email %} ({{ "on" if m.email_opt_in else "off" }}){% endif %}</td>
     <td>
       <form method="post" action="/admin/members/{{ m.id }}/update" class="form inline">
         <select name="group_id"><option value="">No group</option>{% for g in groups %}<option value="{{ g.id }}" {{ "selected" if m.group_id == g.id }}>{{ g.name }}</option>{% endfor %}</select>

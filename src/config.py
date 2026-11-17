@@ -29,6 +29,15 @@ class Settings:
     twilio_messaging_service_sid: str = os.getenv("TWILIO_MESSAGING_SERVICE_SID", "")
     sms_dry_run: bool = os.getenv("SMS_DRY_RUN", "true").lower() == "true"
 
+    # Email (Gmail SMTP with an App Password; leave EMAIL_DRY_RUN=true until tested)
+    smtp_host: str = os.getenv("SMTP_HOST", "smtp.gmail.com")
+    smtp_port: int = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user: str = os.getenv("SMTP_USER", "")
+    smtp_password: str = os.getenv("SMTP_PASSWORD", "")
+    email_from: str = os.getenv("EMAIL_FROM", "")
+    email_reply_to: str = os.getenv("EMAIL_REPLY_TO", "")
+    email_dry_run: bool = os.getenv("EMAIL_DRY_RUN", "true").lower() == "true"
+
     # Anthropic (AI Q&A)
     anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
     anthropic_model: str = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")

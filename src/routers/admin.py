@@ -6,10 +6,12 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
+from ..config import settings
 from ..database import get_db
 from ..models import DailyNote, Group, Meeting, Member, MessageLog, QuestionLog
 from ..security import (COOKIE_NAME, check_credentials, is_admin, make_session_token,
                         normalize_phone, require_admin)
+from ..services import email as mail
 from ..services import lessons, library, sms
 from ..web import render
 
@@ -73,7 +75,8 @@ def members(request: Request, db: Session = Depends(get_db)):
 @router.post("/members/add")
 def member_add(request: Request, first_name: str = Form(...), last_name: str = Form(""),
                phone: str = Form(...), group_id: str = Form(""),
-               consented: str = Form(""), db: Session = Depends(get_db)):
+               consented: str = Form(""), email: str = Form(""),
+               email_consented: str = Form(""), db: Session = Depends(get_db)):
     if (r := _guard(request)):
         return r
     p = normalize_phone(phone)
@@ -87,6 +90,10 @@ def member_add(request: Request, first_name: str = Form(...), last_name: str = F
     if consented:
         m.sms_opt_in = True
         m.opted_in_at = datetime.utcnow()
+    e = email.strip().lower()[:200]
+    if e and "@" in e:
+        m.email = e
+        m.email_opt_in = bool(email_consented)
     db.add(m)
     db.commit()
     return RedirectResponse("/admin/members", status_code=303)
@@ -226,6 +233,13 @@ def broadcast(request: Request, body: str = Form(...), group_id: str = Form(""),
     count = 0
     for m in q.all():
         if sms.send_sms(db, m, body.strip()[:300] + sms.FOOTER, "broadcast"):
+            count += 1
+    eq = db.query(Member).filter(Member.email_opt_in.is_(True), Member.active.is_(True))
+    if group_id.isdigit():
+        eq = eq.filter(Member.group_id == int(group_id))
+    for m in eq.all():
+        if mail.send_email(db, m, f"{settings.app_name}: message from your leaders",
+                           body.strip()[:300], "broadcast"):
             count += 1
     return RedirectResponse(f"/admin/broadcast?sent={count}", status_code=303)
 
