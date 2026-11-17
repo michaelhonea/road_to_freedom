@@ -26,11 +26,11 @@ services:
       - key: EMAIL_DRY_RUN
         value: "true"
       - key: SMTP_USER
-        sync: false
+        value: Road2freedomncc@gmail.com
       - key: SMTP_PASSWORD
         sync: false
       - key: EMAIL_FROM
-        sync: false
+        value: Road2freedomncc@gmail.com
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: DATABASE_URL
