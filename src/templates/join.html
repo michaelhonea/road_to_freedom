@@ -7,6 +7,7 @@
   <label>First name <input name="first_name" required maxlength="80"></label>
   <label>Last name <input name="last_name" maxlength="80"></label>
   <label>Mobile phone <input name="phone" type="tel" required placeholder="843-555-1234"></label>
+  <label>Email (optional) <input name="email" type="email" maxlength="200" placeholder="you@example.com"></label>
   <label>Group
     <select name="group_id">
       <option value="">Not sure / none</option>
@@ -19,6 +20,11 @@
     reminders). Message frequency varies, up to about 1 per day. Msg &amp; data rates may apply. Reply STOP
     anytime to opt out, HELP for help. Consent is not a condition of participating. Your number is never
     shared or sold.</span>
+  </label>
+  <label class="check">
+    <input type="checkbox" name="email_consent" value="yes">
+    <span>Also email me daily notes and meeting reminders (only if you entered an email above). You can opt out
+    anytime.</span>
   </label>
   <button class="btn" type="submit">Sign me up</button>
 </form>

@@ -12,6 +12,7 @@ from ..database import get_db
 from ..models import Group, Member, QuestionLog
 from ..security import normalize_phone
 from ..services import ai, lessons, library, reference, sms
+from ..services import email as mail
 from ..web import render
 
 router = APIRouter()
@@ -70,6 +71,8 @@ def join_submit(
     phone: str = Form(...),
     group_id: str = Form(""),
     consent: str = Form(""),
+    email: str = Form(""),
+    email_consent: str = Form(""),
     db: Session = Depends(get_db),
 ):
     groups = db.query(Group).order_by(Group.name).all()
@@ -87,8 +90,14 @@ def join_submit(
     member.sms_opt_in = True
     member.opted_in_at = datetime.utcnow()
     member.active = True
+    email_n = email.strip().lower()[:200]
+    if email_n and "@" in email_n and email_consent:
+        member.email = email_n
+        member.email_opt_in = True
     db.commit()
     sms.send_welcome(db, member)
+    if member.email_opt_in:
+        mail.send_welcome(db, member)
     return render(request, "join_done.html", {"name": member.first_name})
 
 

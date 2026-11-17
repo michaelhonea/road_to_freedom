@@ -8,6 +8,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from ..config import settings
 from ..database import SessionLocal
 from ..models import DailyNote, Meeting, Member
+from . import email as mail
 from . import sms
 
 log = logging.getLogger(__name__)
@@ -33,6 +34,11 @@ def send_daily_note() -> None:
         body = f"{settings.app_name}: {note.body}{sms.FOOTER}"
         for m in members:
             sms.send_sms(db, m, body, "daily_note")
+        email_members = db.query(Member).filter(
+            Member.email_opt_in.is_(True), Member.active.is_(True), Member.wants_daily_note.is_(True)
+        ).all()
+        for m in email_members:
+            mail.send_email(db, m, f"{settings.app_name}: daily encouragement", note.body, "daily_note")
         note.sent = True
         db.commit()
         log.info("Daily note sent to %d members", len(members))
@@ -60,6 +66,14 @@ def send_meeting_reminders() -> None:
             body = f"Reminder: {meeting.title} - {when}{where}.{extra}{sms.FOOTER}"
             for m in q.all():
                 sms.send_sms(db, m, body, "reminder")
+            eq = db.query(Member).filter(
+                Member.email_opt_in.is_(True), Member.active.is_(True), Member.wants_reminders.is_(True)
+            )
+            if meeting.group_id:
+                eq = eq.filter(Member.group_id == meeting.group_id)
+            for m in eq.all():
+                mail.send_email(db, m, f"Reminder: {meeting.title}",
+                                f"{meeting.title} - {when}{where}.{extra}", "reminder")
             meeting.reminder_sent = True
             db.commit()
     finally:

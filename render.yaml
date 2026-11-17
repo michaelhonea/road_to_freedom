@@ -23,6 +23,14 @@ services:
         sync: false
       - key: TWILIO_MESSAGING_SERVICE_SID
         sync: false
+      - key: EMAIL_DRY_RUN
+        value: "true"
+      - key: SMTP_USER
+        value: Road2freedomncc@gmail.com
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: EMAIL_FROM
+        value: Road2freedomncc@gmail.com
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: DATABASE_URL

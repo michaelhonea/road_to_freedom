@@ -30,6 +30,8 @@ class Member(Base):
     sms_opt_in: Mapped[bool] = mapped_column(Boolean, default=False)
     opted_in_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
     opted_out_at: Mapped[datetime | None] = mapped_column(DateTime, nullable=True)
+    email: Mapped[str | None] = mapped_column(String(200), nullable=True)
+    email_opt_in: Mapped[bool] = mapped_column(Boolean, default=False)
     wants_daily_note: Mapped[bool] = mapped_column(Boolean, default=True)
     wants_reminders: Mapped[bool] = mapped_column(Boolean, default=True)
 

@@ -51,3 +51,9 @@ These materials come from Celebrate Recovery's free resources page, which asks m
 - Port busy: change the port in `main.py`.
 - No AI answers: confirm `ANTHROPIC_API_KEY`; without it the box shows the closest lesson text only.
 - Texts not sending: check `SMS_DRY_RUN`, the Message Log status column, and that the member is opted in.
+
+## Email (Gmail)
+1. On the Gmail account that will send, turn on 2-Step Verification, then create an App Password at myaccount.google.com/apppasswords (name it "Road to Freedom").
+2. In Render, open the service, then Environment, and set `SMTP_USER` (the Gmail address), `SMTP_PASSWORD` (the 16-character app password, no spaces) and optionally `EMAIL_FROM` and `EMAIL_REPLY_TO`.
+3. Leave `EMAIL_DRY_RUN=true` first. Add a member with an email and check, then watch Logs for `[EMAIL DRY RUN]` lines. When it looks right, set `EMAIL_DRY_RUN=false` and use Admin, Broadcast to send a test.
+4. Only members who tick the email consent box get email. Gmail allows roughly 500 messages per day, far more than needed.
