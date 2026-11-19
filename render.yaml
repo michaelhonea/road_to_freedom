@@ -33,6 +33,8 @@ services:
         value: Road2freedomncc@gmail.com
       - key: ANTHROPIC_API_KEY
         sync: false
+      - key: ANTHROPIC_MODEL
+        value: claude-haiku-5-5
       - key: DATABASE_URL
         fromDatabase:
           name: road-to-freedom-db

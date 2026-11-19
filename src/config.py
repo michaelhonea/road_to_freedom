@@ -40,7 +40,7 @@ class Settings:
 
     # Anthropic (AI Q&A)
     anthropic_api_key: str = os.getenv("ANTHROPIC_API_KEY", "")
-    anthropic_model: str = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5-5")
+    anthropic_model: str = os.getenv("ANTHROPIC_MODEL", "claude-haiku-5-5")
 
     # Daily note send time (local, 24h)
     daily_note_hour: int = int(os.getenv("DAILY_NOTE_HOUR", "7"))

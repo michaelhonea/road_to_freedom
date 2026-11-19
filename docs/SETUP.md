@@ -8,7 +8,7 @@ python -m venv .venv
 pip install -r requirements.txt
 copy .env.example .env          # Mac/Linux: cp .env.example .env
 ```
-Edit `.env`: set `ADMIN_PASSWORD` and `SECRET_KEY`. Add `ANTHROPIC_API_KEY` to turn on the AI answers. Leave `SMS_DRY_RUN=true`.
+Edit `.env`: set `ADMIN_PASSWORD` and `SECRET_KEY`. Add `ANTHROPIC_API_KEY` to turn on the AI answers (default model is `claude-haiku-5-5`, the cheapest; override with `ANTHROPIC_MODEL`). Leave `SMS_DRY_RUN=true`.
 
 ## 2. Run
 ```
