@@ -64,6 +64,7 @@
         <li><a href="/resources">Free resources</a></li>
         <li><a href="/ask">Ask a question</a></li>
         <li><a href="/join">Get daily encouragement</a></li>
+        {% if is_admin %}<li><a href="/admin">Leader Admin</a></li>{% else %}<li><a href="/admin/login">Leader Login</a></li>{% endif %}
       </ul>
     </div>
     <div>
